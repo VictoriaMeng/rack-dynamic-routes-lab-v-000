@@ -10,7 +10,12 @@ class Application
       item = @@items.find { |item| item.name == item_name }
 
       if item
-      end 
+        resp.write "#{item.price}"
+      else
+        resp.write "Item not found"
+        resp.status = 400
+      end
+      
     else
       resp.write "Route not found"
       resp.status = 404
